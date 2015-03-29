@@ -1,0 +1,22 @@
+﻿@{
+    Layout = null;
+}
+@model MvcApplication.DAL.Interfaces.IArticle
+
+<article class="box post post-excerpt">
+    <header>
+        <h2>
+            @Html.ActionLink(Model.Title, "Display", "Article", new { seoUrl = Model.URI }, null)
+            @if (!Model.IsPublished)
+            {
+                <span class="draft">(Draft)</span>
+            }
+        </h2>
+    </header>
+    <div class="info">
+        @Html.Partial("DateControl", Model)
+        @Html.Partial("SocialControl")
+    </div>
+    @Html.Raw(Model.ShortBody)
+    @Html.ActionLink("Read article", "Display", "Article", new { seoUrl = Model.URI }, new {style="font-weight:bold;"})
+</article>

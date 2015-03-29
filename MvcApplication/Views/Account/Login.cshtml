@@ -1,0 +1,11 @@
+﻿<form method="POST">
+    <article class="is-post is-post-excerpt">
+        <header>
+            <span class="byline">Admin Key</span>
+            @Html.Password("key")
+            @Html.ValidationMessage("key")
+        </header>
+        <button type="submit">Submit</button>
+    </article>
+    @Html.AntiForgeryToken()
+</form>

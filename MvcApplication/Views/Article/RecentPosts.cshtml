@@ -1,0 +1,14 @@
+﻿@model IEnumerable<MvcApplication.DAL.Interfaces.IArticleLink>
+<section class="box recent-posts">
+    <header>
+        <h2>Recent Posts</h2>
+    </header>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                @Html.ActionLink(item.Title, "Display", "Article", new { seoUrl = item.URI }, null)
+            </li>
+        }
+    </ul>
+</section>

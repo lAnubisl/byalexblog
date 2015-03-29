@@ -1,0 +1,22 @@
+﻿@model MvcApplication.DAL.Interfaces.IArticle
+@{
+    ViewBag.Title = Model.Title;
+    ViewBag.Description = Model.Description;
+    ViewBag.Keywords = Model.Keywords;
+}
+<article class="box post post-excerpt">
+    <header>
+        <h2>@Html.ActionLink(Model.Title, "Display", "Article", new {seoUrl = Model.URI}, null)</h2>
+    </header>
+    <div class="info">
+        @Html.Partial("DateControl", Model)
+        @Html.Partial("SocialControl")
+    </div>
+    @Html.Raw(Model.Body)
+</article>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript"> 
+    var disqus_identifier = '@Model.URI';
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>

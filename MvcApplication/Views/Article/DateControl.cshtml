@@ -1,0 +1,14 @@
+﻿@model MvcApplication.DAL.Interfaces.IArticle
+<span class="date">
+    <span class="month">@Model.DateCreated.ToString("MMMM").Substring(0, 3)<span>@Model.DateCreated.ToString("MMMM").Substring(3)</span></span>
+    <span class="day">@Model.DateCreated.Day</span>
+    <span class="year">, @Model.DateCreated.Year</span>
+</span>
+<ul class="stats">
+    <li><a href="@Url.Action("Display", "Article", new {seoUrl = Model.URI})#disqus_thread" class="icon fa-comment">
+    <span class="disqus-comment-count" data-disqus-identifier="@Model.URI"></span>
+</a></li>
+    @*<li><a href="#" class="icon fa-heart">32</a></li>
+    <li><a href="#" class="icon fa-twitter">64</a></li>
+    <li><a href="#" class="icon fa-facebook">128</a></li>*@
+</ul>

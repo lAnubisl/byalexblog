@@ -1,0 +1,34 @@
+﻿#logo a span {
+    font-weight: normal;
+}
+.title a {
+    color: white;
+    text-decoration: none;
+}
+.title a span {
+    font-weight: normal;
+}
+article {
+    color: black;
+}
+article ul, ol {
+    list-style: initial;
+    padding-left: 20px;
+}
+
+article ol {
+    list-style-type: decimal;
+}
+
+ul.stats {
+    padding-left: 0;
+    list-style: none;
+}
+
+.syntaxhighlighter { 
+     overflow-y: hidden !important; 
+     overflow-x: auto !important; 
+}
+body, input, textarea, select {
+    font-family: Verdana;
+}

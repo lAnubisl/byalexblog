@@ -1,0 +1,73 @@
+﻿@using MvcApplication.Helpers
+@model MvcApplication.DAL.Interfaces.IArticle
+
+<script src="@Url.Content("~/js/ckeditor/ckeditor.js")"></script>
+<form method="POST">
+    <article class="box post post-excerpt">
+        <header>
+            <p>Title</p>
+            @Html.ValidationMessageFor(m => m.Title)
+            @Html.TextBoxFor(m => m.Title)
+
+            @if (Html.IsControllerAndAction("Edit", "Article"))
+            {
+                @Html.HiddenFor(m => m.URI)
+                <p>URI: <b>@Model.URI</b></p>
+            }
+            else
+            {
+                <p>URI</p>
+                @Html.TextBoxFor(m => m.URI)
+                @Html.ValidationMessageFor(m => m.URI)
+            }
+
+            <P>Publish</p>
+            @Html.TextBoxFor(m => m.IsPublished)
+
+            <p>Keywords</p>
+            @Html.TextBoxFor(m => m.Keywords)
+
+            <p>Description</p>
+            @Html.TextBoxFor(m => m.Description)
+
+            <p>Short body</p>
+            @Html.TextAreaFor(m => m.ShortBody)
+            <p>Body</p>
+            @Html.TextAreaFor(m => m.Body, new { rows = 50 })
+            <button type="submit">Save</button>
+            @if (Html.IsControllerAndAction("Edit", "Article"))
+            {
+                <button type="button" style="float: right; background-color: red; color: yellow;" onclick="deletePost('@Model.URI')">Delete</button>
+                <script>
+                    $.ajaxPrefilter(function (options, originalOptions) {
+                        if (options.type.toUpperCase() == "POST") {
+                            options.data = $.param($.extend(originalOptions.data, { __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val() }));
+                        }
+                    });
+
+                    function deletePost(url) {
+                        if (confirm('Sure delete?')) {
+                            $.ajax({
+                                url: '@Url.Action("Delete", "Article")',
+                                type: "POST",
+                                data: { seoUrl: url }
+                            }).done(function () {
+                                window.location.href = '@Url.Action("Index")';
+                            });
+                        }
+                    }
+                </script>
+            }
+        </header>
+        <div class="info">
+            @Html.Partial("DateControl", Model)
+            @Html.Partial("SocialControl")
+        </div>
+        <script>
+            CKEDITOR.replace("ShortBody");
+            CKEDITOR.replace("Body");
+            CKEDITOR.config.contentsCss = "/css/my.css";
+        </script>
+    </article>
+    @Html.AntiForgeryToken()
+</form>
