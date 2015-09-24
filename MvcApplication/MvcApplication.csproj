@@ -99,6 +99,7 @@
     <Compile Include="Core\ILoggedInUserHelper.cs" />
     <Compile Include="Core\LoggedInUserHelper.cs" />
     <Compile Include="Core\MyControllerFactory.cs" />
+    <Compile Include="Core\PasswordHash.cs" />
     <Compile Include="DAL.Interfaces\IArticle.cs" />
     <Compile Include="DAL.Interfaces\IArticleLink.cs" />
     <Compile Include="DAL\Article.cs" />

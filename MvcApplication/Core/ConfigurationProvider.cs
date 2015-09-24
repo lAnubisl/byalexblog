@@ -1,5 +1,4 @@
-﻿using System;
-using System.Configuration;
+﻿using System.Configuration;
 using MvcApplication.Properties;
 
 namespace MvcApplication.Core
@@ -11,9 +10,9 @@ namespace MvcApplication.Core
             return ConfigurationManager.ConnectionStrings["mongodb"].ConnectionString;
         }
 
-        public string GetAdminPassword()
+        public string GetAdminPasswordHash()
         {
-            return DateTime.Now.Month + ConfigurationManager.AppSettings["AdminPassword"];
+            return ConfigurationManager.AppSettings["AdminPassword"];
         }
 
         public int GetArticlesOnPageCount()

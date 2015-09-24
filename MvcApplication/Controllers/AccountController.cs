@@ -30,7 +30,7 @@ namespace MvcApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(string key)
         {
-            if (key != configurationProvider.GetAdminPassword())
+            if (PasswordHash.ValidatePassword(key, configurationProvider.GetAdminPasswordHash()))
             {
                 ModelState.AddModelError("key", "Key is incorrect");
                 return View("Login");

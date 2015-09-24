@@ -3,7 +3,7 @@
     public interface IConfigurationProvider
     {
         string GetConnectionString();
-        string GetAdminPassword();
+        string GetAdminPasswordHash();
         int GetArticlesOnPageCount();
     }
 }
