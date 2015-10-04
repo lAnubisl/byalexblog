@@ -5,13 +5,13 @@
 
 <article class="box post post-excerpt">
     <header>
-        <h2>
+        <h1>
             @Html.ActionLink(Model.Title, "Display", "Article", new { seoUrl = Model.URI }, null)
             @if (!Model.IsPublished)
             {
                 <span class="draft">(Draft)</span>
             }
-        </h2>
+        </h1>
     </header>
     <div class="info">
         @Html.Partial("DateControl", Model)
