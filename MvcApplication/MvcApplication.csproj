@@ -99,6 +99,7 @@
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Core\ArticleDAO.cs" />
     <Compile Include="Core\ConfigurationProvider.cs" />
     <Compile Include="Core\IArticleDAO.cs" />
@@ -490,8 +491,11 @@
     <Content Include="syntaxhighlighter_3.0.83\tests\.rvmrc" />
     <Content Include="syntaxhighlighter_3.0.83\tests\webrick.rb" />
     <Content Include="syntaxhighlighter_3.0.83\tests\webrick.sh" />
+    <Content Include="Views\Image\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Content\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

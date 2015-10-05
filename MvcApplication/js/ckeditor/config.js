@@ -39,4 +39,8 @@ CKEDITOR.editorConfig = function( config ) {
 	config.allowedContent = true;
 	config.fillEmptyBlocks = false;
 	config.height = '800px';
+
+	config.filebrowserImageBrowseUrl = "/image/index";
+	config.filebrowserImageWindowWidth = 780;
+	config.filebrowserImageWindowHeight = 720;
 };
