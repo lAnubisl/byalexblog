@@ -1,5 +1,11 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.ServiceModel.Syndication;
+using System.Text;
 using System.Web.Mvc;
+using System.Xml;
 using MvcApplication.Core;
 using MvcApplication.DAL.Interfaces;
 using MvcApplication.Models;
@@ -34,6 +40,46 @@ namespace MvcApplication.Controllers
             Throw404IfNull(articles);
             return View(new ArticleListModel(new PagingModel(page, articlesCount), articles));
         }
+
+	    public ContentResult Rss()
+	    {
+		    var feed = new SyndicationFeed
+		    {
+			    Title = SyndicationContent.CreatePlaintextContent("ByAlex Code Blog"),
+			    Description = SyndicationContent.CreatePlaintextContent("Alexander Panfilenok personal code blog"),
+				Copyright = SyndicationContent.CreatePlaintextContent("Copyright Alexander Panfilenok"),
+				Language = "en-us",
+				Categories = { new SyndicationCategory(".NET"), new SyndicationCategory("Development") },
+				Links = { SyndicationLink.CreateSelfLink(new Uri(Request.Url.AbsoluteUri)) },
+				Items = dao.Load(0, 10)
+					.Select(a => new SyndicationItem
+					{
+						Title = SyndicationContent.CreatePlaintextContent(a.Title),
+						Id = a.URI,
+						PublishDate = a.DateCreated,
+						LastUpdatedTime = a.DateCreated,
+						Links = { SyndicationLink.CreateAlternateLink(new Uri(new Uri(Request.Url.AbsoluteUri), a.URI)) },
+						Content = SyndicationContent.CreateHtmlContent(a.Body),
+						Summary = SyndicationContent.CreateHtmlContent(a.ShortBody)
+					}
+						)
+					.ToList()
+			};
+		    
+			var rssFormatter = new Rss20FeedFormatter(feed, false);
+			var sb = new StringBuilder();
+			using (var writer = XmlWriter.Create(sb, new XmlWriterSettings { Indent = true }))
+			{
+				rssFormatter.WriteTo(writer);
+				writer.Flush();
+			}
+
+			return new ContentResult
+			{
+				Content = sb.ToString(),
+				ContentType = "application/rss+xml"
+			};
+	    }
 
         [HttpGet]
         public ActionResult Display(string seoUrl)
