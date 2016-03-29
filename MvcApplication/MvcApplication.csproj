@@ -121,6 +121,7 @@
     <Compile Include="Models\ArticleEditModel.cs" />
     <Compile Include="Models\ArticleListModel.cs" />
     <Compile Include="Models\PagingModel.cs" />
+    <Compile Include="Models\SiteMap\url.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\InternalsVisibleToDryIocFactoryCompilerDynamicAssembly.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -359,6 +360,7 @@
     <Content Include="js\ckeditor\skins\moono-dark\images\lock.png" />
     <Content Include="js\ckeditor\skins\moono-dark\images\refresh.png" />
     <Content Include="js\ckeditor\styles.js" />
+    <Content Include="robots.txt" />
     <Content Include="syntaxhighlighter_3.0.83\index.html" />
     <Content Include="syntaxhighlighter_3.0.83\scripts\shAutoloader.js" />
     <Content Include="syntaxhighlighter_3.0.83\scripts\shBrushAppleScript.js" />

@@ -9,6 +9,7 @@ namespace MvcApplication
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute("Index", "", new { controller = "Article", action = "Index" });
+	        routes.MapRoute("SiteMap", "SiteMap", new {controller = "Home", action = "SiteMap" });
 	        routes.MapRoute("Rss", "Rss", new {controller = "Article", action = "Rss"});
             routes.MapRoute("AboutMe", "AboutMe", new { controller = "Home", action = "AboutMe" });
             routes.MapRoute("ListArticles", "archive/{page}", new { controller = "Article", action = "List", page = 1 }, new { page = "([\\d]+)?" });
