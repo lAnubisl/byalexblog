@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.ServiceModel.Syndication;
 using System.Text;
@@ -41,6 +39,7 @@ namespace MvcApplication.Controllers
             return View(new ArticleListModel(new PagingModel(page, articlesCount), articles));
         }
 
+		[HttpGet]
 	    public ContentResult Rss()
 	    {
 		    var feed = new SyndicationFeed
