@@ -1,34 +1,42 @@
-﻿#logo a span {
-    font-weight: normal;
-}
+﻿#logo a span { font-weight: normal; }
+
 .title a {
-    color: white;
-    text-decoration: none;
-}
-.title a span {
-    font-weight: normal;
-}
-article {
-    color: black;
-}
-article ul, ol {
-    list-style: initial;
-    padding-left: 20px;
+	color: white;
+	text-decoration: none;
 }
 
-article ol {
-    list-style-type: decimal;
+.title a span { font-weight: normal; }
+
+article { color: black; }
+
+article ul, ol {
+	list-style: initial;
+	padding-left: 20px;
 }
+
+article ol { list-style-type: decimal; }
 
 ul.stats {
-    padding-left: 0;
-    list-style: none;
+	list-style: none;
+	padding-left: 0;
 }
 
-.syntaxhighlighter { 
-     overflow-y: hidden !important; 
-     overflow-x: auto !important; 
+.syntaxhighlighter {
+	overflow-x: auto !important;
+	overflow-y: hidden !important;
 }
-body, input, textarea, select {
-    font-family: Verdana;
+
+body, input, textarea, select { font-family: Verdana; }
+
+.tweet { float: left; }
+
+.IN-widget {
+	float: left;
+	padding-left: 10px;
+}
+
+.fb-like {
+	float: left;
+	line-height: 20px;
+	padding-left: 5px;
 }
