@@ -15,6 +15,17 @@
     @Html.Raw(Model.Body)
 </article>
 
+<div id="social">
+	<div class="tweet">
+		<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://byalexblog.net/@Model.URI">Tweet</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	</div>
+	<div class="in-like">
+		<script type="IN/Share" data-url="http://byalexblog.net/@Model.URI" data-counter="right"></script>
+	</div>
+	<div class="fb-like" data-href="http://byalexblog.net/@Model.URI" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+</div>
+
 <div id="disqus_thread"></div>
 <script type="text/javascript"> 
     var disqus_identifier = '@Model.URI';
