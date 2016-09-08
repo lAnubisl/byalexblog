@@ -36,7 +36,7 @@ namespace MvcApplication.Controllers
             var articlesCountOnPage = configurationProvider.GetArticlesOnPageCount();
             var articles = dao.Load((page - 1) * articlesCountOnPage, articlesCountOnPage);
             Throw404IfNull(articles);
-            return View(new ArticleListModel(new PagingModel(page, articlesCount), articles));
+            return View(new ArticleListModel(new PagingModel(page, articlesCount, articlesCountOnPage), articles));
         }
 
 		[HttpGet]
