@@ -55,6 +55,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net45\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="DryIoc">
       <HintPath>..\packages\DryIoc.dll.1.4.1\lib\net40\DryIoc.dll</HintPath>
     </Reference>
@@ -67,6 +71,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -112,12 +117,13 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
-    <Compile Include="Core\ArticleDAO.cs" />
+    <Compile Include="Core\MongoDbArticleDAO.cs" />
     <Compile Include="Core\ConfigurationProvider.cs" />
     <Compile Include="Core\IArticleDAO.cs" />
     <Compile Include="Core\IConfigurationProvider.cs" />
     <Compile Include="Core\ILoggedInUserHelper.cs" />
     <Compile Include="Core\LoggedInUserHelper.cs" />
+    <Compile Include="Core\MsSqlArticleDAO.cs" />
     <Compile Include="Core\MyControllerFactory.cs" />
     <Compile Include="Core\PasswordHash.cs" />
     <Compile Include="DAL.Interfaces\IArticle.cs" />

@@ -5,9 +5,13 @@ using MvcApplication.DAL.Interfaces;
 
 namespace MvcApplication.DAL
 {
-    internal class Article : IArticle
+    internal class MongoDbArticle : Article
     {
         public BsonObjectId _id { get; set; }
+    }
+
+    internal class Article : IArticle
+    {
         public string Body { get; set; }
         public string ShortBody { get; set; }
         public string Description { get; set; }
