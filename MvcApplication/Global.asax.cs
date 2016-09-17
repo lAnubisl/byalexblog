@@ -23,7 +23,7 @@ namespace MvcApplication
         {
             Container.Register<IConfigurationProvider, ConfigurationProvider>(Reuse.Singleton);
             Container.Register<ILoggedInUserHelper, LoggedInUserHelper>(Reuse.Singleton);
-            Container.Register<IArticleDAO, MongoDbArticleDAO>(Reuse.Singleton);
+            Container.Register<IArticleDAO, MsSqlArticleDAO>(Reuse.Singleton);
             Container.Register<HomeController, HomeController>(Reuse.Transient);
             Container.Register<ArticleController, ArticleController>(Reuse.Transient);
             Container.Register<AccountController, AccountController>(Reuse.Transient);

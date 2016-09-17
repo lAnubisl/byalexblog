@@ -45,14 +45,15 @@ namespace MvcApplication.Core
 
         public IEnumerable<IArticle> Load(int skip, int take)
         {
-            var query = "select * from article where ";
+            var query = "select * from article";
             if (userHelper.IsAdmin())
             {
                 query = query + " where IsPublished = 1";
             }
+            query = query + " order by DateCreated desc offset @skip rows fetch next @take rows only";
             using (var connection = NewConnection)
             {
-                return connection.Query<Article>(query).ToList();
+                return connection.Query<Article>(query, new {skip, take}).ToList();
             }
         }
 
@@ -60,7 +61,7 @@ namespace MvcApplication.Core
         {
             using (var connection = NewConnection)
             {
-                return connection.Query<Article>("select top @take (*) from article where IsPublished = 1 order by DateCreated desc", new {take}).ToList();
+                return connection.Query<Article>("select URI, Title from article where IsPublished = 1 order by DateCreated desc offset 0 rows fetch next @take rows only", new {take}).ToList();
             }
         }
 
@@ -112,7 +113,7 @@ namespace MvcApplication.Core
         }
 
         private const string InsertArticleQuery = "insert into article (URI, Title, Tags, Body, Keywords, Description, IsPublished, ShortBody) values (@URI, @Title, @Tags, @Body, @Keywords, @Description, @IsPublished, @ShortBody)";
-        private const string UpdateArticleQuery = "update article set Title = @Title, Tags = @Tags, Body = @Body, Keywords = ";
+        private const string UpdateArticleQuery = "update article set Title = @Title, Tags = @Tags, Body = @Body, Keywords = @Keywords, Description = @Description, IsPublished = @IsPublished, ShortBody = @ShortBody where URI = @URI";
 
         public void Delete(string URI)
         {

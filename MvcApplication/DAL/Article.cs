@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using MongoDB.Bson;
 using MvcApplication.DAL.Interfaces;
 
 namespace MvcApplication.DAL
 {
-    internal class MongoDbArticle : Article
-    {
-        public BsonObjectId _id { get; set; }
-    }
-
     internal class Article : IArticle
     {
         public string Body { get; set; }
