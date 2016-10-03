@@ -153,6 +153,7 @@
     <Compile Include="Validation\UrlExistsAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\ckeditor\customStyle.css" />
     <Content Include="assets\css\font-awesome.min.css" />
     <Content Include="assets\css\ie8.css" />
     <Content Include="assets\css\images\bg01.png" />
@@ -168,6 +169,7 @@
     <Content Include="assets\js\main.js" />
     <Content Include="assets\js\skel.min.js" />
     <Content Include="assets\js\util.js" />
+    <Content Include="assets\syntaxhighlighter_3.0.83\scripts\shBrushGherkin.js" />
     <Content Include="Global.asax" />
     <Content Include="images\linkedin.png" />
     <Content Include="images\mail.png" />

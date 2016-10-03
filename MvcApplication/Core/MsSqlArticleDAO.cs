@@ -46,7 +46,7 @@ namespace MvcApplication.Core
         public IEnumerable<IArticle> Load(int skip, int take)
         {
             var query = "select * from article";
-            if (userHelper.IsAdmin())
+            if (!userHelper.IsAdmin())
             {
                 query = query + " where IsPublished = 1";
             }
@@ -85,11 +85,11 @@ namespace MvcApplication.Core
                 return;
             }
 
-            var newArticle = true;
+            var newArticle = false;
             var dbArticle = Load(article.URI);
             if (dbArticle == null)
             {
-                newArticle = false;
+                newArticle = true;
                 dbArticle = new Article();
                 dbArticle.DateCreated = DateTime.Now;
             }
@@ -112,8 +112,8 @@ namespace MvcApplication.Core
             }
         }
 
-        private const string InsertArticleQuery = "insert into article (URI, Title, Tags, Body, Keywords, Description, IsPublished, ShortBody) values (@URI, @Title, @Tags, @Body, @Keywords, @Description, @IsPublished, @ShortBody)";
-        private const string UpdateArticleQuery = "update article set Title = @Title, Tags = @Tags, Body = @Body, Keywords = @Keywords, Description = @Description, IsPublished = @IsPublished, ShortBody = @ShortBody where URI = @URI";
+        private const string InsertArticleQuery = "insert into article (URI, Title, Tags, Body, Keywords, Description, IsPublished, ShortBody, DateCreated) values (@URI, @Title, @Tags, @Body, @Keywords, @Description, @IsPublished, @ShortBody, @DateCreated)";
+        private const string UpdateArticleQuery = "update article set Title = @Title, Tags = @Tags, Body = @Body, Keywords = @Keywords, Description = @Description, IsPublished = @IsPublished, ShortBody = @ShortBody, DateCreated = @DateCreated where URI = @URI";
 
         public void Delete(string URI)
         {
