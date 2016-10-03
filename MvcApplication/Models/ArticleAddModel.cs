@@ -11,7 +11,7 @@ namespace MvcApplication.Models
         [Required]
         public string ShortBody { get; set; }
         [Required]
-        [RegularExpression("^[a-z-]+$")]
+        [RegularExpression("^[a-z0-9-]+$")]
         public virtual string URI { get; set; }
         [Required]
         public string Title { get; set; }

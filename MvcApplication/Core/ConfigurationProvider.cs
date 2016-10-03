@@ -7,7 +7,7 @@ namespace MvcApplication.Core
     {
         public string GetConnectionString()
         {
-            return ConfigurationManager.ConnectionStrings["mongodb"].ConnectionString;
+            return ConfigurationManager.ConnectionStrings["mssql"].ConnectionString;
         }
 
         public string GetAdminPasswordHash()

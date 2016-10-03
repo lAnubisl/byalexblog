@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using MongoDB.Bson;
 using MvcApplication.DAL.Interfaces;
 
 namespace MvcApplication.DAL
 {
     internal class Article : IArticle
     {
-        public BsonObjectId _id { get; set; }
         public string Body { get; set; }
         public string ShortBody { get; set; }
         public string Description { get; set; }

@@ -43,4 +43,5 @@ CKEDITOR.editorConfig = function( config ) {
 	config.filebrowserImageBrowseUrl = "/image/index";
 	config.filebrowserImageWindowWidth = 780;
 	config.filebrowserImageWindowHeight = 720;
+	config.contentsCss = "/assets/ckeditor/customStyle.css";
 };
