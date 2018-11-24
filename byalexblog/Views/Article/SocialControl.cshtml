@@ -1,0 +1,8 @@
+﻿@model byalexblog.DAL.IArticle
+<ul class="stats">
+    <li>
+        <a href="@Url.Action("Display", "Article", new {seoUrl = Model.URI})#disqus_thread" class="icon fa-comment">
+            <span class="disqus-comment-count" data-disqus-identifier="@Model.URI"></span>
+        </a>
+    </li>
+</ul>

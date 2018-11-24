@@ -1,0 +1,79 @@
+﻿@using byalexblog.Helpers
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="@ViewBag.Description"/>
+    <meta name="keywords" content="@ViewBag.Keywords"/>
+    <!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+    <link type="text/css" rel="stylesheet" href="/assets/syntaxhighlighter_3.0.83/styles/shCoreDefault.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css"/><![endif]-->
+    <link rel="stylesheet" href="/assets/css/my.css"/>
+    <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+    <link rel="alternate" type="application/rss+xml" title="By Alex Code Blog" href="@Url.Action("Rss", "Article")" />
+</head>
+<body>
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.5";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div id="content">
+        <div class="inner">
+            @RenderBody()
+        </div>
+    </div>
+    <div id="sidebar">
+        <h1 id="logo">
+            <a href="/">BY ALEX <span>code blog</span></a>
+        </h1>
+
+        <nav id="nav">
+            <ul>
+                <li @if (Html.IsControllerAndAction("Index", "Article")) { <text> class="current" </text>  }>
+                    @Html.ActionLink("Latest Post", "Index", "Article")
+                </li>
+                <li @if (Html.IsControllerAndAction("List", "Article")) { <text> class="current" </text>  }>
+                    @Html.ActionLink("All Posts", "List", "Article")
+                </li>
+                <li @if (Html.IsControllerAndAction("AboutMe", "Home")) { <text> class="current" </text>  }>
+                    @Html.ActionLink("About Me", "AboutMe", "Home")
+                </li>
+            </ul>
+        </nav>
+        <section class="box">
+            <a href="@Url.Action("Rss", "Article")"><img src="/images/rss.png" title="rss" alt="rss" /></a>
+            <a href="http://www.linkedin.com/in/panfilenok"><img src="/images/linkedin.png" height="30px" title="my linkedIn" alt="my linkedIn" /></a>
+            @*<a href="@Url.Action("Rss", "Article")"><img src="/images/mail.png" title="mailing list" alt="mailing list" /></a>*@
+        </section>
+        @await Component.InvokeAsync("RecentPosts")
+        <ul id="copyright">
+            <li>&copy; @DateTime.Now.Year Alexander Panfilenok</li>
+            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+    </div>
+
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/skel.min.js"></script>
+    <script src="/assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/syntaxhighlighter_3.0.83/scripts/shCore.js"></script>
+    <script src="/assets/syntaxhighlighter_3.0.83/scripts/shBrushCSharp.js"></script>
+    <script src="/assets/syntaxhighlighter_3.0.83/scripts/shBrushBash.js"></script>
+    <script src="/assets/syntaxhighlighter_3.0.83/scripts/shBrushXml.js"></script>
+    <script src="/assets/syntaxhighlighter_3.0.83/scripts/shBrushPowerShell.js"></script>
+    <script src="/assets/syntaxhighlighter_3.0.83/scripts/shBrushSql.js"></script>
+    <script src="/assets/syntaxhighlighter_3.0.83/scripts/shBrushGherkin.js"></script>
+    <script>SyntaxHighlighter.all();</script>
+    <script src="/assets/js/disqus.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+﻿@{
+    Layout = null;
+}
+@model byalexblog.Models.PagingModel
+<div class="pagination">
+    @if (Model.ShowButtonPrevious)
+    {
+        @Html.ActionLink("Previous Page", "List", "Article", new {page = Model.PreviousPage}, new {@class = "button previous"})
+    }
+    <div class="pages">
+        @foreach (var page in Model.Pages)
+        {
+            if (Model.ShowHellipBefore(page)){<span>&hellip;</span>}
+            @Html.ActionLink(page.ToString(), "List", "Article", new {page}, new {@class = Model.IsCurrent(page) ? "active" : string.Empty})
+            if (Model.ShowHellipAfter(page)){<span>&hellip;</span>}
+        }
+    </div>
+    @if (Model.ShowButtonNext)
+    {
+        @Html.ActionLink("Next Page", "List", "Article", new {page = Model.NextPage}, new {@class = "button next"})
+    }
+</div>
