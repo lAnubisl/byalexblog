@@ -52,12 +52,13 @@
         <section class="box">
             <a href="@Url.Action("Rss", "Article")"><img src="/images/rss.png" title="rss" alt="rss" /></a>
             <a href="http://www.linkedin.com/in/panfilenok"><img src="/images/linkedin.png" height="30px" title="my linkedIn" alt="my linkedIn" /></a>
-            @*<a href="@Url.Action("Rss", "Article")"><img src="/images/mail.png" title="mailing list" alt="mailing list" /></a>*@
         </section>
         @await Component.InvokeAsync("RecentPosts")
         <ul id="copyright">
             <li>&copy; @DateTime.Now.Year Alexander Panfilenok</li>
-            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+            <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+            <li>Sources: <a href="https://github.com/lAnubisl/byalexblog">GitHub</a></li>
+            <li>Hosted by: <a href="https://en.wikipedia.org/wiki/Raspberry_Pi">Raspberry Pi 3 B</a></li>
         </ul>
     </div>
 

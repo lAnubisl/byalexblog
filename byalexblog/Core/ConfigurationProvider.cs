@@ -16,14 +16,9 @@ namespace byalexblog.Core
             return _configuration.GetConnectionString("default");
         }
 
-        public string GetAdminPasswordHash()
-        {
-            return _configuration.GetSection("AppSettings")["PasswordHash"];
-        }
-
         public int GetArticlesOnPageCount()
         {
-            return 5;
+            return 5; 
         }
     }
 }

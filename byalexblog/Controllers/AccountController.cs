@@ -11,10 +11,12 @@ namespace byalexblog.Controllers
     public class AccountController : Controller
     {
         private readonly IConfigurationProvider configurationProvider;
+        private readonly ISettingDAO settingsDAO;
 
-        public AccountController(IConfigurationProvider configurationProvider)
+        public AccountController(IConfigurationProvider configurationProvider, ISettingDAO settingsDAO)
         {
             this.configurationProvider = configurationProvider;
+            this.settingsDAO = settingsDAO;
         }
 
         [HttpGet]
@@ -34,7 +36,7 @@ namespace byalexblog.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(string key, string returnUrl)
         {
-            if (!PasswordHash.ValidatePassword(key, configurationProvider.GetAdminPasswordHash()))
+            if (key != settingsDAO.Get("Password"))
             {
                 ModelState.AddModelError("key", "Key is incorrect");
                 return View("Login");
@@ -58,7 +60,7 @@ namespace byalexblog.Controllers
                 authProperties);
             return returnUrl != null 
                 ? Redirect(returnUrl) 
-                : (ActionResult)RedirectToAction("Index");
+                : (ActionResult)RedirectToAction("Add", "Article");
         }
     }
 }

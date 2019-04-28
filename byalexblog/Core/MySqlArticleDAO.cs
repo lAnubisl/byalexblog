@@ -3,23 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using Dapper;
 using byalexblog.DAL;
-using MySql.Data.MySqlClient;
 
 namespace byalexblog.Core
 {
-    public class MySqlArticleDAO : IArticleDAO
+    public class MySqlArticleDAO : BaseMySqlDAO, IArticleDAO
     {
         private readonly ILoggedInUserHelper userHelper;
-        private readonly IConfigurationProvider configurationProvider;
 
-        public MySqlArticleDAO(ILoggedInUserHelper userHelper, IConfigurationProvider configurationProvider)
+        public MySqlArticleDAO(ILoggedInUserHelper userHelper, IConfigurationProvider configurationProvider) : base(configurationProvider)
         {
             this.userHelper = userHelper;
-            this.configurationProvider = configurationProvider;
         }
-
-        private MySqlConnection NewConnection => new MySqlConnection(configurationProvider.GetConnectionString());
-
 
         public int Count()
         {
