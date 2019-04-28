@@ -21,6 +21,7 @@ namespace byalexblog
         {
             services.AddSingleton<Core.IConfigurationProvider>(new Core.ConfigurationProvider(_configuration));
             services.AddSingleton<ILoggedInUserHelper, LoggedInUserHelper>();
+            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IArticleDAO, MySqlArticleDAO>();
             services.AddSingleton<ISettingDAO, MySqlSettingDAO>();
             services.AddMvc();

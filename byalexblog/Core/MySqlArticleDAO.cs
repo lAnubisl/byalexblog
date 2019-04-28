@@ -18,7 +18,7 @@ namespace byalexblog.Core
         public int Count()
         {
             var query = "select count(*) from Articles";
-            if (userHelper.IsAdmin())
+            if (!userHelper.IsAdmin())
             {
                 query = query + " where IsPublished = 1";
             }
